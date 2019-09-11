@@ -20,8 +20,17 @@
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
+                <ul class="nav navbar-nav"></ul>
+                @if (Request.IsAuthenticated)
+                {
+                    <div class="navbar-text navbar-right">
+                        <span>Welcome @User.Identity.Name!</span>
+                        @using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { style = "display:inline" }))
+                        {
+                            <button class="btn btn-warning" type="submit">Logout</button>
+                        }
+                    </div>
+                }
             </div>
         </div>
     </div>

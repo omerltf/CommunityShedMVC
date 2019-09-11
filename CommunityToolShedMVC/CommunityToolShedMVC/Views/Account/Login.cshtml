@@ -8,6 +8,8 @@
 
 @using (Html.BeginForm())
 {
+    @Html.ValidationSummary();
+
     <div>
         @Html.LabelFor(m => m.Email)
         @Html.TextBoxFor(m => m.Email)
