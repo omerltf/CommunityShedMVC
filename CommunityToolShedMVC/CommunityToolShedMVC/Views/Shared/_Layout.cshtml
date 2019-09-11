@@ -24,7 +24,7 @@
                 @if (Request.IsAuthenticated)
                 {
                     <div class="navbar-text navbar-right">
-                        <span>Welcome @User.Identity.Name!</span>
+                        <span>Welcome @(((CommunityToolShedMVC.Security.CustomPrincipal)User).Person.Name)! </span>
                         @using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { style = "display:inline" }))
                         {
                             <button class="btn btn-warning" type="submit">Logout</button>
