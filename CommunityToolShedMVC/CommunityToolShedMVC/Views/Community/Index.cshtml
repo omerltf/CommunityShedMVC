@@ -1,0 +1,34 @@
+﻿@model List<CommunityToolShedMVC.Models.Community>
+
+@{
+    ViewBag.Title = "My Communities";
+}
+
+<h2>My Communities</h2>
+
+<table class="table table-sm table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Community Name</th>
+            <th>Is Open Community?</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        @foreach (var community in Model)
+        {
+            <tr>
+                <td>@community.CommunityName</td>
+                <td>@community.IsOpen</td>
+                <td class="btn btn-default">@Html.ActionLink("Details", "Details", new { id = community.CommunityId }, null)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <p class="btn btn-warning">@Html.ActionLink("Create", "Create")</p>
+    <p class="btn btn-danger">@Html.ActionLink("Join", "Join")</p>
+
+</div>

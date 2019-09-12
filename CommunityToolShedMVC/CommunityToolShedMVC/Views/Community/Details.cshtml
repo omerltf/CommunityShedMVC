@@ -1,0 +1,12 @@
+﻿@model CommunityToolShedMVC.Models.Community
+
+@{
+    ViewBag.Title = "Community Details";
+}
+
+<h2>@Model.CommunityName</h2>
+
+
+
+@Html.ActionLink("Search Tools", "Index", "Tools", new {communityId=Model.CommunityId}, null)
+
