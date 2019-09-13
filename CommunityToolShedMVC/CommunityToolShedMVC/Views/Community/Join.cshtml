@@ -1,0 +1,33 @@
+﻿@model List<CommunityToolShedMVC.Models.Community>
+
+@{
+    ViewBag.Title = "Join Communities";
+}
+
+<h2>Communities List</h2>
+
+<table class="table table-sm table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Community Name</th>
+            <th>Is Open Community?</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var community in Model)
+        {
+            <tr>
+                <td>@community.CommunityName</td>
+                <td>@community.IsOpen</td>
+                <td>@using (Html.BeginForm())
+                {
+                    <input name="id" type="hidden" value="@community.CommunityId"/>
+                    <button type="submit" class="btn btn-danger">Join</button>
+                }</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
