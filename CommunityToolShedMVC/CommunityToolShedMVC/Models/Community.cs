@@ -11,6 +11,7 @@ namespace CommunityToolShedMVC.Models
         public int CommunityId { get; set; }
         public string CommunityName { get; set; }
         public string CreatorPersonId { get; set; }
+        public string CreatorPersonName { get; set;}
         public bool IsOpen { get; set; }
     }
 }

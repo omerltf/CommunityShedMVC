@@ -9,12 +9,13 @@ namespace CommunityToolShedMVC.ViewModels
     public class CreateToolViewModel
     {
         public int ToolId { get; set; }
-        [Required]
-        public string ToolName { get; set; }
         public int OwnerPersonId { get; set; }
         public int CommunityId { get; set; }
         public string Purpose { get; set; }
         public string Age { get; set; }
         public string Warnings { get; set; }
+        [Required]
+        public string ToolName { get; set; }
+        
     }
 }

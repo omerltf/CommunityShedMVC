@@ -20,16 +20,19 @@ namespace CommunityToolShedMVC.Controllers
         //Maybe Index will contain MyCommunities
         public ActionResult Index()
         {
+            CommunityViewModel communityDetails = new CommunityViewModel();
             CustomPrincipal currentUser = (CustomPrincipal)User;
             int currentUserPersonId = currentUser.Person.PersonId;
+            communityDetails.person = currentUser.Person;
             MyCommunityList = DatabaseHelper.Retrieve<Community>(@"
                     select pc.CommunityId, pc.PersonCommunityStatusId, c.CommunityName, c.IsOpen
                     from PersonCommunity pc
                     join Community c on c.CommunityId=pc.CommunityId
                     where pc.PersonId=@PersonId
             ", new SqlParameter("@PersonId", currentUserPersonId));
+            communityDetails.myCommunities = MyCommunityList;
 
-            return View(MyCommunityList);
+            return View(communityDetails);
         }
 
 
@@ -122,9 +125,10 @@ namespace CommunityToolShedMVC.Controllers
         public ActionResult Details (int id)
         {
             Community community = DatabaseHelper.RetrieveSingle<Community>(@"
-                    select CommunityName, CreatorPersonId, IsOpen, CommunityId
-                    from Community
-                    where CommunityId=@CommunityId
+                    select c.CommunityName, c.CreatorPersonId, c.IsOpen, c.CommunityId, p.Name as CreatorPersonName
+                    from Community c
+					left join Person p on p.PersonId = c.CreatorPersonId
+                    where c.CommunityId=@CommunityId
                 ", new SqlParameter("@CommunityId", id));
 
             return View(community);

@@ -40,7 +40,7 @@ namespace CommunityToolShedMVC.Controllers
                 new SqlParameter("@HashedPassword",hashedPassword));
 
                 FormsAuthentication.SetAuthCookie(viewModel.Email, false);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Community");
 
             }
             return View(viewModel);
@@ -77,7 +77,7 @@ namespace CommunityToolShedMVC.Controllers
             if (ModelState.IsValid)
             {
                 FormsAuthentication.SetAuthCookie(viewModel.Email, false);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Community");
             }
             return View(viewModel);
         }

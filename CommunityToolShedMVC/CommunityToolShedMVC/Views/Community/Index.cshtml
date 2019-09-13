@@ -1,4 +1,4 @@
-﻿@model List<CommunityToolShedMVC.Models.Community>
+﻿@model CommunityToolShedMVC.ViewModels.CommunityViewModel
 
 @{
     ViewBag.Title = "My Communities";
@@ -11,16 +11,27 @@
         <tr>
             <th>Community Name</th>
             <th>Is Open Community?</th>
+            <th>My Roles</th>
             <th>&nbsp;</th>
         </tr>
     </thead>
     
+    
+
     <tbody>
-        @foreach (var community in Model)
+        @foreach (var community in @Model.myCommunities)
         {
             <tr>
                 <td>@community.CommunityName</td>
                 <td>@community.IsOpen</td>
+                <td>@foreach (var role in Model.person.Roles)
+                {
+                    if (role.CommunityId == community.CommunityId)
+                    {
+                        @role.RoleName;
+                        <span> </span>
+                    }
+                }</td>
                 <td class="btn btn-default">@Html.ActionLink("Details", "Details", new { id = community.CommunityId }, null)</td>
             </tr>
         }

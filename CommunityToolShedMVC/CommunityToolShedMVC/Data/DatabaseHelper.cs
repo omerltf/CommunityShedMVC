@@ -55,7 +55,11 @@ namespace CommunityToolShedMVC.Data
                             if (property.CanWrite && dataReaderColumnNames.Contains(propertyName))
                             {
                                 object value = dr[propertyName];
-                                property.SetValue(model, value);
+                                if (value != DBNull.Value)
+                                {
+                                    property.SetValue(model, value);
+                                }
+
                             }
                         }
 

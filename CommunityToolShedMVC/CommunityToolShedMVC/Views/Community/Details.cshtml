@@ -4,9 +4,22 @@
     ViewBag.Title = "Community Details";
 }
 
-<h2>@Model.CommunityName</h2>
+<h2 style="color:green">@Model.CommunityName</h2>
+
+<div class="btn navbar-btn">
+    @Html.ActionLink("My Tools", "Owner", "Tools", new { communityId = Model.CommunityId }, null)
+</div>
+
+<div class="btn navbar-btn">
+    @Html.ActionLink("Borrowed Tools", "BorrowedTools", "Tools", new { communityId = Model.CommunityId }, null)
+</div>
+
+<div class="btn navbar-btn">
+    @Html.ActionLink("Search Tools", "Index", "Tools", new { communityId = Model.CommunityId }, null)
+</div>
+
+<h4 class="alert-danger" style="float:right">Creator Name: @Model.CreatorPersonName</h4>
 
 
 
-@Html.ActionLink("Search Tools", "Index", "Tools", new {communityId=Model.CommunityId}, null)
 

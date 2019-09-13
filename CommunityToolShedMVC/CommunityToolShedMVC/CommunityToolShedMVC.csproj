@@ -122,12 +122,13 @@
     </Compile>
     <Compile Include="Models\Community.cs" />
     <Compile Include="Models\CommunityRole.cs" />
-    <Compile Include="Models\ComunityRole.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Tool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\CustomIdentity.cs" />
     <Compile Include="Security\CustomPrincipal.cs" />
+    <Compile Include="ViewModels\BorrowToolViewModel.cs" />
+    <Compile Include="ViewModels\CommunityViewModel.cs" />
     <Compile Include="ViewModels\CreateCommunityViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
@@ -149,6 +150,9 @@
     <Content Include="Views\Community\Details.cshtml" />
     <Content Include="Views\Tools\Create.cshtml" />
     <Content Include="Views\Tools\Index.cshtml" />
+    <Content Include="Views\Tools\Owner.cshtml" />
+    <Content Include="Views\Tools\Borrow.cshtml" />
+    <Content Include="Views\Tools\BorrowedTools.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

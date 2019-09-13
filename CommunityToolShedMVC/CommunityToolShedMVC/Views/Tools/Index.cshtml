@@ -10,21 +10,41 @@
     <thead class="thead-dark">
         <tr>
             <th>Tool Name</th>
+            <th>Community</th>
+            <th>Purpose</th>
+            <th>Age</th>
+            <th>Is Borrowed?</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
             <th>&nbsp;</th>
         </tr>
     </thead>
     <tbody>
-        @foreach(var tool in Model) { 
+        @foreach (var tool in Model) {
         <tr>
             <td>@tool.ToolName</td>
+            <td>@ViewBag.CommunityName</td>
+            <td>@tool.Purpose</td>
+            <td>@tool.Age</td>
+            <td>@tool.IsOut</td>
             <td>
-                Borrow Tool
+                @if (!tool.IsOut)
+                {
+                @Html.ActionLink("Borrow Tool", "Borrow", new { id = tool.ToolId })
+                }
             </td>
+            <td>
+                @if(ViewBag.isReviewer && !tool.IsOut){
+                    using (Html.BeginForm("Delete", "Tools", new { id = tool.ToolId }))
+                    {
+                        <button class="btn btn-danger" type="submit">Delete Tool</button>
+                    }
+                }</td>
         </tr>
         }
     </tbody>
 </table>
 
-<div class="btn btn-danger">
-    @Html.ActionLink("Create", "Create", new { id = Model.ElementAt(0).CommunityId})
+<div class="btn btn-warning">
+    @Html.ActionLink("Create", "Create")
 </div>

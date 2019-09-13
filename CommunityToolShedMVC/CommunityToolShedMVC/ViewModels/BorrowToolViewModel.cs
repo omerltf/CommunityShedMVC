@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace CommunityToolShedMVC.Models
+namespace CommunityToolShedMVC.ViewModels
 {
-    public class Tool
+    public class BorrowToolViewModel
     {
+        [Required]
         public int ToolId { get; set; }
         public string ToolName { get; set; }
-        public int OwnerPersonId { get; set; }
-        public int CommunityId { get; set; }
-        public string Purpose { get; set; }
-        public string Age { get; set; }
-        public string Warnings { get; set; }
-        public bool IsOut { get; set; }
+        [Required]
+        public int BorrowerPersonId { get; set; }
         public string BorrowerName { get; set; }
+        [Required]
         public DateTime CheckedOutOn { get; set; }
+        [Required]
         public DateTime DueOn { get; set; }
         public DateTime ReturnedOn { get; set; }
-        public int BorrowedToolId { get; set; }
     }
 }
